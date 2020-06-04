@@ -29,7 +29,6 @@ export default class Keypad extends Component {
   }
   handleButtonPress = () => {
     setTimeout(() => {}, 2000);
-
     clearTimeout(this.state.timerid);
     var d = new Date();
     var n = d.getTime();
@@ -158,14 +157,16 @@ export default class Keypad extends Component {
           }}
         >
           <h2 className="mt-3">Keypad</h2>
-          <textarea className="mt-2" readOnly value={this.state.text} />
+          <textarea className="mt-2" readOnly style={{resize: "none"}} value={this.state.text} />
           <div></div>
 
           <div className="row pl-5 pt-3">
             {Object.entries(keys).map((entry) => (
               <div key={entry[0]}  className="col-3" style={{ margin: "5px" }}>
                 <button
-                  className="btn btn-primary"
+                  sttle={{backgroundColor:"red"}}
+                  className="btn btn-primary btn-xg btn-block" style={{paddingRight:"50px",textAlign:"center"}}
+
                   onTouchEnd={() => this.handleButtonRelease(entry[0])}
                   onMouseDown={this.handleButtonPress}
                   onMouseUp={() => this.handleButtonRelease(entry[0])}
