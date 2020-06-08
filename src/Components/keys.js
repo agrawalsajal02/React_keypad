@@ -1,5 +1,5 @@
 
-var keys = {
+const keys = {
     "1": Number,
     "2": ["a", "b", "c"],
     "3": ["d", "e", "f"],

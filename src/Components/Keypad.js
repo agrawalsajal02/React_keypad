@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import keys from "./keys";
-import styled from 'styled-components';
 import Button from "./Button"
+import styled from 'styled-components';
 export default class Keypad extends Component {
   
   
@@ -10,15 +10,15 @@ export default class Keypad extends Component {
     key_id: -1 /* key position */,
     arr_no: 0 /* alphabet in perticular key position */,
     timerid: null /*  Previous timer Running  */,
-    Time_stamp: Date /*  time stamp of on mouse down */,
+    timeStamp: Date /*  time stamp of on mouse down */,
   };
 
   /*   on Mouse down event trigger this func  */
   /*   Set the  */
 
-  handleButtonPress = (id) => {
+  handleButtonPress = () => {
     const date = new Date().getTime();
-    this.setState({ ...this.state, Time_stamp: date });
+    this.setState({ timeStamp: date });
   };
 
   
@@ -33,14 +33,14 @@ export default class Keypad extends Component {
       state_copy.date = null;
       state_copy.id = -1;
       this.setState(state_copy);
-      return;
-    }
+      
+    }else{
 
 
     /*   Difference between the mouse up and mouse down    */
 
     const currTime = new Date().getTime();
-    if (currTime - this.state.Time_stamp < 800) {
+    if (currTime - this.state.timeStamp < 800) {
       if (this.state.timerid) {
     
     
@@ -116,7 +116,7 @@ export default class Keypad extends Component {
       this.setState(stateCopy);
     }
   };
-
+  }
 
 
 /* Timer function  */
@@ -153,14 +153,14 @@ export default class Keypad extends Component {
       key_id: -1,
       arr_no: 0,
       timerid: null,
-      Time_stamp: null,
+      timeStamp: null,
     });
   };
 
   render() {
     return (
       <div>
-        <Div2>
+        <Wrapper>
           <h2 className="mt-3">Keypad</h2>
           <textarea
           rows="1" cols="27"
@@ -172,10 +172,10 @@ export default class Keypad extends Component {
           <div></div>
            
         <Button clear={this.clear} back={this.remove} 
-        mousedown={(id)=>{this.handleButtonPress(id)}}
+        mousedown={this.handleButtonPress}
          mouseup={(id)=>{this.handleButtonRelease(id)}}   />            
           
-        </Div2>
+        </Wrapper>
       </div>
     );
   }
@@ -183,7 +183,7 @@ export default class Keypad extends Component {
 
 
 
-const Div2=styled.div`
+const Wrapper =styled.div`
 height: 400px;
 width: 350px;
 textAlign: center;

@@ -10,7 +10,7 @@ export default class Button extends Component {
                 <button
                   className="btn btn-primary btn-xg btn-block"
                   onTouchEnd={this.props.mouseup.bind(this,entry[0])}
-                  onMouseDown={this.props.mousedown.bind(this,entry[0])}
+                  onMouseDown={this.props.mousedown}
                   onMouseUp={this.props.mouseup.bind(this,entry[0])}
                 >
                   <div>{entry.map((item) => item)}</div>
@@ -22,7 +22,7 @@ export default class Button extends Component {
               style={{flexBasis: "25%"}}
               key="10"
               onClick={
-                this.props}
+                this.props.back}
             >
               <div>back</div>
             </button>
