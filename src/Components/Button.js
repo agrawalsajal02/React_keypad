@@ -1,41 +1,54 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import keys from "./keys";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 20px;
+`;
+
+const ButtonWrap=styled.div`
+flex: 2
+`;
 
 export default class Button extends Component {
-    render() {
-        return (
-            <div style={{ "display": "flex","justify-content":"space-around","flexWrap":"wrap",padding:"20px"}}>
-            {Object.entries(keys).map((entry) => (
-              <div key={entry[0]}  className="mt-2 mb-2 ml-2 mr-2" style={{flexBasis: "25%"}} >
-                <button
-                  className="btn btn-primary btn-xg btn-block"
-                  onTouchEnd={this.props.mouseup.bind(this,entry[0])}
-                  onMouseDown={this.props.mousedown}
-                  onMouseUp={this.props.mouseup.bind(this,entry[0])}
-                >
-                  <div>{entry.map((item) => item)}</div>
-                </button>
-              </div>
-            ))}
-            <button
-              className="btn btn-primary"
-              style={{flexBasis: "25%"}}
-              key="10"
-              onClick={
-                this.props.back}
+  render() {
+    return (
+      <Wrapper>
+          
+        {Object.entries(keys).map((entry) => (
+            <ButtonWrap
+            className="btn btn-primary btn-xg btn-block mx-3 my-2"
+              onTouchEnd={() => {
+                this.props.mouseup(entry[0]);
+              }}
+              onMouseDown={this.props.mousedown}
+              onMouseUp={() => {
+                this.props.mouseup(entry[0]);
+              }}
             >
-              <div>back</div>
-            </button>
+              <div>{entry.map((item) => item)}</div>
+            </ButtonWrap>
+        ))}
+        <ButtonWrap
+              className="btn btn-primary btn-xg btn-block  mx-3 my-2"
+          key="10"
+          onClick={this.props.back}
+        >
+          <div>back</div>
+        </ButtonWrap>
 
-            <button
-              className="btn btn-primary"
-              key="11"
-              style={{flexBasis: "25%"}}
-              onClick={
-                    this.props.clear}
-            >
-              <div>Clear</div>
-            </button>
-          </div>)
-    }
+        <ButtonWrap
+          className="btn btn-primary  btn-xg btn-block  mx-3 my-2"
+          key="11"
+          onClick={this.props.clear}
+        >
+          <div>Clear</div>
+        </ButtonWrap>
+       
+      </Wrapper>
+    );
+  }
 }
