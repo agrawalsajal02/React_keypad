@@ -9,31 +9,30 @@ const Wrapper = styled.div`
   padding: 20px;
 `;
 
-const ButtonWrap=styled.div`
-flex: 2
+const ButtonWrap = styled.div`
+  flex: 1;
 `;
 
 export default class Button extends Component {
   render() {
     return (
       <Wrapper>
-          
         {Object.entries(keys).map((entry) => (
-            <ButtonWrap
+          <ButtonWrap
             className="btn btn-primary btn-xg btn-block mx-3 my-2"
-              onTouchEnd={() => {
-                this.props.mouseup(entry[0]);
-              }}
-              onMouseDown={this.props.mousedown}
-              onMouseUp={() => {
-                this.props.mouseup(entry[0]);
-              }}
-            >
-              <div>{entry.map((item) => item)}</div>
-            </ButtonWrap>
+            onTouchEnd={() => {
+              this.props.mouseup(entry[0]);
+            }}
+            onMouseDown={this.props.mousedown}
+            onMouseUp={() => {
+              this.props.mouseup(entry[0]);
+            }}
+          >
+            <div>{entry.map((item) => item)}</div>
+          </ButtonWrap>
         ))}
         <ButtonWrap
-              className="btn btn-primary btn-xg btn-block  mx-3 my-2"
+          className="btn btn-primary btn-xg btn-block  mx-3 my-2"
           key="10"
           onClick={this.props.back}
         >
@@ -47,7 +46,6 @@ export default class Button extends Component {
         >
           <div>Clear</div>
         </ButtonWrap>
-       
       </Wrapper>
     );
   }

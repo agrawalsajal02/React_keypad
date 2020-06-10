@@ -12,8 +12,8 @@ const Wrapper = styled.div`
   background: #ffff00;
 `;
 
-const Textarea=styled.textarea`
-resize: none;
+const Textarea = styled.textarea`
+  resize: none;
 `;
 
 export default class Keypad extends Component {
@@ -35,13 +35,9 @@ export default class Keypad extends Component {
 
   /*  on mouse up button to record time diffrenence */
 
-
-
-  
-
   handleButtonRelease = (id) => {
     /*   condiction for 0 and 1 keys  */
-        
+
     if (id === "0" || id === "1") {
       const { text } = this.state;
       this.setState({
@@ -89,7 +85,7 @@ export default class Keypad extends Component {
             this.setState({ timerId: time, arrNo: arrPos, text: text });
           } else {
             /*   Different Key is pressed frequently */
-            let {text}=this.state
+            let { text } = this.state;
             const time = this.timercall();
             this.setState({
               text: text.concat(keys[id][0]),
@@ -127,7 +123,7 @@ export default class Keypad extends Component {
 
   timercall = () => {
     const timer = setTimeout(() => {
-      this.setState({keyId:-1,arrNo:0,timerId:null});
+      this.setState({ keyId: -1, arrNo: 0, timerId: null });
     }, 2000);
     return timer;
   };
@@ -135,10 +131,10 @@ export default class Keypad extends Component {
   /*   To remove the rightmost alphabet on screen */
   remove = () => {
     clearTimeout(this.state.timerid);
-    let {text} =this.state;
+    let { text } = this.state;
     const len = text.length;
     text = text.substring(0, len - 1);
-    this.setState({timerId:null,text:text});
+    this.setState({ timerId: null, text: text });
   };
 
   /*   To clear all screen */
@@ -153,18 +149,12 @@ export default class Keypad extends Component {
   };
 
   render() {
-    const {text}=this.state
+    const { text } = this.state;
     return (
       <div>
         <Wrapper>
           <h2 className="mt-3">Keypad</h2>
-          <Textarea
-            rows="1"
-            cols="27"
-            className="mt-2"
-            readOnly
-            value={text}
-          />
+          <Textarea rows="1" cols="27" className="mt-2" readOnly value={text} />
           <div></div>
 
           <Button
