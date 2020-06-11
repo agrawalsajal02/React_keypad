@@ -25,15 +25,31 @@ export default class Keypad extends Component {
     timeStamp: Date /*  time stamp of on mouse down */,
   };
 
-  /*   on Mouse down event trigger this func  */
-  /*   Set the  */
 
-  handleButtonPress = () => {
+
+
+  /**
+   *
+   *on Mouse down event trigger this func
+   * @memberof Keypad
+   */
+
+
+   handleButtonPress = () => {
     const date = new Date().getTime();
     this.setState({ timeStamp: date });
   };
 
-  /*  on mouse up button to record time diffrenence */
+
+
+
+
+  /**
+   *
+   *on mouse up button to record time difference 
+   * @memberof Keypad
+   */
+
 
   handleButtonRelease = (id) => {
     /*   condiction for 0 and 1 keys  */
@@ -119,8 +135,11 @@ export default class Keypad extends Component {
     }
   };
 
-  /* Timer function  */
-
+  /**
+   *
+   *Timer function to calculate time
+   * @memberof Keypad
+   */
   timercall = () => {
     const timer = setTimeout(() => {
       this.setState({ keyId: -1, arrNo: 0, timerId: null });
@@ -128,7 +147,14 @@ export default class Keypad extends Component {
     return timer;
   };
 
-  /*   To remove the rightmost alphabet on screen */
+
+
+
+  /**
+   *
+   * To remove the rightmost alphabet on screen
+   * @memberof Keypad
+   */
   remove = () => {
     clearTimeout(this.state.timerid);
     let { text } = this.state;
@@ -137,7 +163,13 @@ export default class Keypad extends Component {
     this.setState({ timerId: null, text: text });
   };
 
-  /*   To clear all screen */
+
+
+  /**
+   *
+   *To clear all screen 
+   * @memberof Keypad
+   */
   clear = () => {
     this.setState({
       text: "",
